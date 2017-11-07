@@ -1,4 +1,5 @@
 import pyodbc
+import numpy as np
 import pandas as pd
 
 def get_db_connection():
@@ -19,21 +20,38 @@ def get_db_connection():
     return ret
 
 def sp_execute(sp_name, param):
+    ret =[]
     con = get_db_connection()
+    cur = con.cursor()
 
+    # SQL作成
     sql = 'exec' + '\n'
     sql += sp_name + '\n'
-
     for key, value in param.items():
         val = str(value) if value is not None else 'NULL'
         sql += '%s = %s ,' % (str(key), val)
     else:
         sql = sql[:-1]
 
-    ret = pd.read_sql(
-    sql,
-    con,
-    )
-    # 返却テーブルの行列変換
-    ret = ret.T
+    # SQL実行
+    cur.execute(sql)
+
+    # 返却されたデータセットをループ
+    while True:
+            desc = cur.description
+            rows = cur.fetchall()
+            array = np.array(rows)
+            df = pd.DataFrame(array)
+            # インデックス名変更
+            columns = []
+            for columnIndex in range(0,len(desc)):
+                columns.append(desc[columnIndex][0])
+            else:
+                df.columns = columns
+
+            ret.append(df.T)
+            if not cur.nextset():
+                break
+    cur.close()
+    con.close()
     return ret

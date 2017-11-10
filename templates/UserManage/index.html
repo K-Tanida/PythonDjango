@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block extrahead %}
+<script type='text/javascript' src='{% static 'js/handsontable.full.min.js' %}'/></script>
+<link rel='stylesheet' type='text/css' href='{% static 'css/handsontable.full.min.css' %}'/>
+{% endblock %}
+
+{% block script %}
+window.onload = function() {
+  var data = {{dflist|safe}};
+  var grid = document.getElementById('grid');
+  new Handsontable(grid, {data: data});
+};
+{% endblock %}
+
+
+
+{% block body %}
+<div class='container'>
+  <div id ='grid'></div>
+</div>
+{% endblock %}

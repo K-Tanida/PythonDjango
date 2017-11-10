@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class='container'>
+  <div class="panel panel-info">
+    <div class="panel-heading">やること</div>
+    <div class="panel-body">2017/01～　契約内容洗い出し</div>
+  </div>
+  <div class="panel panel-info">
+    <div class="panel-heading">デザイン</div>
+    <div class="panel-body">適当でOK</div>
+  </div>
+  <div class="panel panel-info">
+    <div class="panel-heading">必要機能</div>
+    <ul class="list-group">
+      <li class="list-group-item">通信会社ごとのソート検索機能</li>
+      <li class="list-group-item">電話番号記入欄</li>
+      <li class="list-group-item">お客様番号、契約番号記入欄</li>
+      <li class="list-group-item">契約者記入欄</li>
+      <li class="list-group-item">契約内容(安心サービス、ひかり通信、等)</li>
+      <li class="list-group-item">契約日、更新日等</li>
+      <li class="list-group-item">メモ(一定額未満は2ヶ月ごとの請求書発行、○月までしか使用しない、等)</li>
+      <li class="list-group-item">使用部署</li>
+      <li class="list-group-item">使用者名</li>
+      <li class="list-group-item">その他(YAMAHAで使用、とか)</li>
+      <li class="list-group-item">請求書が来た日を記入する欄</li>
+      <li class="list-group-item">請求書の支払期限日を記入する欄</li>
+      <li class="list-group-item">契約終了日</li>
+  </ul>
+  </div>
+  <div class="panel panel-info">
+    <div class="panel-heading">フォーム・機能等</div>
+    <ul class="list-group">
+      <li class="list-group-item">使用部署検索の時に押して、使用部署検索に移動するフォーム</li>
+      <li class="list-group-item">使用者検索の時に押して、使用者検索に移動するフォーム</li>
+      <li class="list-group-item">一覧表示(今まで使ってたエクセルの表示に近いもの)【ひと月ごとの一覧表示】</li>
+      <li class="list-group-item">【有効】チェックを入れたものだけを一覧として出力して表示させるフォーム</li>
+      <li class="list-group-item">契約終了の時に押して、どの契約番号がいつ終了したかを入力するフォーム</li>
+      <li class="list-group-item">契約新規追加用フォーム</li>
+  </ul>
+  </div>
+</div>
+{% endblock %}

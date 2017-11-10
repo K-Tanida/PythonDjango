@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class='container'>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>ユーザ名</th>
+        <th>有効</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for form in forms %}
+        <tr>
+          <td>{{ form.user_name }}</td>
+          <td>{{ form.is_active }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {{forms}}
+</div>
+{% endblock %}
